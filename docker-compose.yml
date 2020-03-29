@@ -41,6 +41,7 @@ services:
       - '443:443'
     volumes:
       - ./nginx/:/etc/nginx/
+      - /etc/letsencrypt:/etc/letsencrypt
     networks:
       - reverse_proxy_net
 
