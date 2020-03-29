@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - db_net
+
+  ghost:
+    image: ghost:3-alpine
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    volumes:
+      - ./content:/var/lib/ghost/content
+    environment:
+      database__client: mysql
+      database__connection__host: mysql
+      database__connection__user: ghost
+      database__connection__password: ${DB_PASSWORD}
+      database__connection__database: ghost
+    networks:
+      - reverse_proxy_net
+      - db_net
+
+  nginx:
+    depends_on:
+      - ghost
+    restart: unless-stopped
+    image: nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx/:/etc/nginx/
+    networks:
+      - reverse_proxy_net
+
+networks:
+  db_net:
+  reverse_proxy_net:
