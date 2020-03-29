@@ -7,7 +7,7 @@ services:
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'true'
       MYSQL_DATABASE: ghost
-      MYSQL_USER: ghost
+      MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./mysql:/var/lib/mysql
@@ -24,7 +24,7 @@ services:
     environment:
       database__client: mysql
       database__connection__host: mysql
-      database__connection__user: ghost
+      database__connection__user: ${DB_USER}
       database__connection__password: ${DB_PASSWORD}
       database__connection__database: ghost
     networks:
