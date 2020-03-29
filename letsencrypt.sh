@@ -1,6 +1,6 @@
 docker run -it --rm --name certbot \
-  -v ./letsencrypt:/etc/letsencrypt \
-  -v ./letsencrypt/log:/var/log/letsencrypt \
+  -v /home/admin/southeastppe.org/letsencrypt:/etc/letsencrypt \
+  -v /home/admin/southeastppe.org/letsencrypt/log:/var/log/letsencrypt \
   -p 80:80 \
   certbot/certbot -t certonly \
   --standalone \
