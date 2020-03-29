@@ -30,6 +30,13 @@ services:
       database__connection__user: ${DB_USER}
       database__connection__password: ${DB_PASSWORD}
       database__connection__database: ghost
+      mail__transport: SMTP
+      mail__options__service: Mailgun
+      mail__options__host: smtp.mailgun.org
+      mail__options__port: '465'
+      mail__options__secureConnection: true
+      mail__options__auth__user: ${MAILGUN_USER}
+      mail__options__auth__pass: ${MAILGUN_PASS}
     networks:
       - reverse_proxy_net
       - db_net
