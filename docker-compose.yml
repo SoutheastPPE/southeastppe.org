@@ -1,6 +1,7 @@
 version: '3.7'
 
 services:
+  # Database
   mysql:
     image: mysql:5.7
     restart: unless-stopped
@@ -14,6 +15,7 @@ services:
     networks:
       - db_net
 
+  # Ghost CMS
   ghost:
     image: ghost:3-alpine
     depends_on:
@@ -31,6 +33,7 @@ services:
       - reverse_proxy_net
       - db_net
 
+  # Reverse Proxy & Static Files Server
   nginx:
     depends_on:
       - ghost
