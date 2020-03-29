@@ -24,6 +24,7 @@ services:
     volumes:
       - ./content:/var/lib/ghost/content
     environment:
+      url: https://southeastppe.org
       database__client: mysql
       database__connection__host: mysql
       database__connection__user: ${DB_USER}
