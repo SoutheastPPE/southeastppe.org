@@ -1,5 +1,6 @@
 content/
 mysql/
+letsencrypt/
 
 # ---> Node
 # Logs
