@@ -12,6 +12,18 @@ Containerized infrastructure for [southeastppe.org](https://southeastppe.org)
 
 ## Stack & Topology
 
+```
+  Nginx
+    │
+    ├── Ghost <────> MySQL
+    │   
+    └── Static Files
+        ├── doc1.pdf
+        ├── doc2.pdf
+        ├── image1.jpg
+        └── image2.jpg
+```
+
 Nginx is deployed in dual-role:
 
 1. Placed in front of Ghost as reverse proxy handling TLS.
@@ -23,15 +35,3 @@ Networks are separated into:
 
 - `reverse_proxy_net` connecting Nginx <──> Ghost
 - `db_net` connecting Ghost <──> MySQL
-
-```
-  Nginx (layer 7 reverse proxy / static file server)
-    │
-    ├── Ghost (CMS) <────> MySQL (Database)
-    │   
-    └── Static Files
-        ├── doc1.pdf
-        ├── doc2.pdf
-        ├── image1.jpg
-        └── image2.jpg
-```
