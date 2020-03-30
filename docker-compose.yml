@@ -53,6 +53,7 @@ services:
     volumes:
       - ./nginx/:/etc/nginx/
       - ./letsencrypt:/etc/letsencrypt
+      - ./static:/static
     networks:
       - reverse_proxy_net
 
