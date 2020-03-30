@@ -35,3 +35,7 @@ Networks are separated into:
 
 - `reverse_proxy_net` connecting Nginx <──> Ghost
 - `db_net` connecting Ghost <──> MySQL
+
+## Maintenance & Orchestration
+
+TLS certificates are obtained through LetsEncrypt and automatically managed by a Certbot container running on a cron job. This also automatically updates all containers to their latest patch versions.
