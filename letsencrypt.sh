@@ -7,4 +7,4 @@ docker run -it --rm --name certbot \
   --email noah@southeastppe.org \
   --no-eff-email \
   --agree-tos --renew-by-default \
-  -d southeastppe.org,www.southeastppe.org;
+  -d southeastppe.org,www.southeastppe.org,dev.southeastppe.org;
