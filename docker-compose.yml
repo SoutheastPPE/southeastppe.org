@@ -41,6 +41,25 @@ services:
       - reverse_proxy_net
       - db_net
 
+  ghost-dev:
+    image: ghost:3-alpine
+    restart: unless-stopped
+    volumes:
+      - ./content-dev:/var/lib/ghost/content
+    environment:
+      url: https://dev.southeastppe.org
+      database__client: mysql
+      database__connection__host: sqlite3
+      mail__transport: SMTP
+      mail__options__service: Mailgun
+      mail__options__host: smtp.mailgun.org
+      mail__options__port: '465'
+      mail__options__secureConnection: 'true'
+      mail__options__auth__user: ${MAILGUN_USER}
+      mail__options__auth__pass: ${MAILGUN_PASS}
+    networks:
+      - reverse_proxy_net
+
   # Reverse Proxy & Static Files Server
   nginx:
     depends_on:
