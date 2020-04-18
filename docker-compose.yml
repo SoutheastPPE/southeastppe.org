@@ -48,8 +48,7 @@ services:
       - ./content-dev:/var/lib/ghost/content
     environment:
       url: https://dev.southeastppe.org
-      database__client: mysql
-      database__connection__host: sqlite3
+      database__client: sqlite3
       mail__transport: SMTP
       mail__options__service: Mailgun
       mail__options__host: smtp.mailgun.org
